@@ -1,0 +1,10 @@
+int isBSTUtil(struct Node* node, int min, int max) {
+    if (node == NULL) return 1;
+    if (node->data <= min || node->data >= max) return 0;
+    return isBSTUtil(node->left, min, node->data) &&
+           isBSTUtil(node->right, node->data, max);
+}
+
+int isBST(struct Node* root) {
+    return isBSTUtil(root, -1000000, 1000000); // range large enough
+}
