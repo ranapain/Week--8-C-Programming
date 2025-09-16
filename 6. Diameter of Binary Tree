@@ -1,0 +1,18 @@
+int diameterUtil(struct Node* root, int* height) {
+    if (root == NULL) {
+        *height = 0;
+        return 0;
+    }
+    int lh = 0, rh = 0;
+    int ldia = diameterUtil(root->left, &lh);
+    int rdia = diameterUtil(root->right, &rh);
+
+    *height = 1 + (lh > rh ? lh : rh);
+    return (ldia > rdia ? (ldia > (lh + rh + 1) ? ldia : lh + rh + 1) 
+                        : (rdia > (lh + rh + 1) ? rdia : lh + rh + 1));
+}
+
+int diameter(struct Node* root) {
+    int h = 0;
+    return diameterUtil(root, &h);
+}
