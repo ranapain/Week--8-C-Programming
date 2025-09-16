@@ -1,0 +1,13 @@
+struct Node* insert(struct Node* root, int key) {
+    if (root == NULL) {
+        struct Node* node = (struct Node*)malloc(sizeof(struct Node));
+        node->data = key;
+        node->left = node->right = NULL;
+        return node;
+    }
+    if (key < root->data)
+        root->left = insert(root->left, key);
+    else if (key > root->data)
+        root->right = insert(root->right, key);
+    return root;
+}
