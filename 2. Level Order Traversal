@@ -1,0 +1,13 @@
+#include <queue>
+void levelOrder(struct Node* root) {
+    if (root == NULL) return;
+    std::queue<Node*> q;
+    q.push(root);
+    while (!q.empty()) {
+        Node* node = q.front();
+        q.pop();
+        printf("%d ", node->data);
+        if (node->left) q.push(node->left);
+        if (node->right) q.push(node->right);
+    }
+}
