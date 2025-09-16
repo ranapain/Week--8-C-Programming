@@ -1,0 +1,16 @@
+#include <queue>
+void leftView(struct Node* root) {
+    if (root == NULL) return;
+    std::queue<Node*> q;
+    q.push(root);
+    while (!q.empty()) {
+        int n = q.size();
+        for (int i = 0; i < n; i++) {
+            Node* node = q.front();
+            q.pop();
+            if (i == 0) printf("%d ", node->data);
+            if (node->left) q.push(node->left);
+            if (node->right) q.push(node->right);
+        }
+    }
+}
